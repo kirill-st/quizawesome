@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to QuizAwesome</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Noto+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+<body>
+	<header id="header">
+		<div id="header-container" class="clearfix">
+			<h1 id="logo"><a href="/">QuizAwesome</a></h1>
+			<a href="new-settings" id="main-cta" class="btn btn-cta">Create a new quiz</a>
+			<a href="#" id="log-out-btn" class="btn btn-small">Log Out</a>
+		</div>
+	</header>
+	<div id="main-content">
+	<% for (var i = 0; i < quizzes.length; i++) {
+	name = quizzes[i].quizName;
+	id = quizzes[i]._id; %>
+		<section class="quiz-section clearfix">
+			<h3 class="quiz-title"><a href="/quiz/<%= id %>"><%= name %></a></h3>
+			<div class="quiz-actions">
+				<span class="quiz-action view">
+				<i class="fa fa-file-text-o" aria-hidden="true"></i>
+				<form action="/quiz" method="POST" id="view-<%=i%>" class="viewform">
+				<input type="hidden" name="viewid" value="<%= id %>">
+				<span class="text">View</span>
+				</form></span>
+				<span class="quiz-action edit">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+				<span class="text">Edit</span></span>
+				<span class="quiz-action remove">
+				<i class="fa fa-trash-o" aria-hidden="true"></i>
+				<form action="/remove" method="POST" id="remove-<%=i%>">
+				<input type="hidden" name="id" value="<%= id %>">
+				<span class="text">Remove</span></span>
+				</form>
+				
+			</div>
+		</section>
+	<% } %>
+	
+	</div>
+	<script src="/assets/scripts/script.js"></script>
+</body>
+</html>

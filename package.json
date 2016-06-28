@@ -1,0 +1,22 @@
+{
+  "name": "quizawesome",
+  "version": "1.0.0",
+  "description": "Create quizes and surveys easily with QuizAwesome.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quiz",
+    "survey"
+  ],
+  "author": "Kirill",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.21",
+    "nodemon": "^1.9.2"
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to QuizAwesome</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Noto+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+<body>
+	<header id="header">
+		<div id="header-container" class="clearfix">
+			<h1 id="logo"><a href="/">QuizAwesome</a></h1>
+			<a href="#" id="log-out-btn" class="btn btn-small">Log Out</a>
+		</div>
+	</header>
+	<div id="main-content">
+
+		<!-- QUESTIONS & ANSWERS: Filling out the data -->
+
+		<section class="new-quiz-section clearfix">
+		<a href="/"><button class="back btn"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Back</button></a>
+		<h1 class="quiz-heading"><%= data.quizName %></h1>
+		<ol id="quiz-full">
+			<% for (var i = 0; i < data.questions.length; i++) { %>
+			<li class="question-full">
+				<div class="question"><%= data.questions[i].questionContent %></div>
+				<div class="answers">
+					<% for (var k = 0; k < data.questions[i].answers.length; k++) { %>
+					<div class="answer">
+						<input type="radio" id="answers-<%= i+1 %>-<%= k+1 %>" name="answers-<%= i+1 %>">
+						<label for="answers-<%= i+1 %>-<%= k+1 %>" class="unchecked">
+						<%= data.questions[i].answers[k].answer %>
+						</label>
+					</div>
+					<% } %>
+				</div>
+			</li>
+			<% } %>
+
+		</ol>
+		
+		</section>
+
+		<section class="quiz-block clearfix">
+		<button class="btn btn-large">Score</button>
+		</section>
+	</div>
+	<script>
+		var dataClient = <%- JSON.stringify(data); %>;
+	</script>
+	<script src="/assets/scripts/script.js"></script>
+</body>
+</html>

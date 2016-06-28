@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to QuizAwesome</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Noto+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+<body>
+	<header id="header">
+		<div id="header-container" class="clearfix">
+			<h1 id="logo"><a href="/">QuizAwesome</a></h1>
+			<a href="#" id="log-out-btn" class="btn btn-small">Log Out</a>
+		</div>
+	</header>
+	<div id="main-content">
+
+		<!-- QUESTIONS & ANSWERS: Filling out the data -->
+        <form action="/new" method="POST">
+        
+		<section class="new-quiz-section clearfix">
+		<a href="/"><button type="button" class="back btn"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Back</button></a>
+		<h2 class="quiz-heading">Enter quiz information in order to proceed:</h2>
+		
+		<section class="quiz-settings">
+			<label for="question-number">How many questions does the quiz have?</label>
+			<input id="question-number" type="number" value="3" min="3" max="50" name="questionNum">
+			<br />
+			<label for="answer-number">How many answers should each question have?</label>
+			<input id="answer-number" type="number" value="3" max="5" min="2" name="answerNum">
+		</section>
+		
+		</section>
+
+		<section class="quiz-block clearfix">
+		<input type="submit" value="Continue" class="btn btn-large">
+		</section>
+        
+        </form>
+	</div>
+	<script src="/assets/scripts/script.js"></script>
+</body>
+</html>

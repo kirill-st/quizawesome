@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to QuizAwesome</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Noto+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+<body>
+	<header id="header">
+		<div id="header-container" class="clearfix">
+			<h1 id="logo"><a href="/">QuizAwesome</a></h1>
+			<a href="#" id="log-out-btn" class="btn btn-small">Log Out</a>
+		</div>
+	</header>
+	<div id="main-content">
+
+		<!-- QUESTIONS & ANSWERS: Filling out the data -->
+
+		<section class="new-quiz-section clearfix">
+		<a href="/new-settings"><button class="back btn"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>&nbsp;Back</button></a>
+		<h1 class="quiz-heading">New Quiz</h1>
+		<form action="/new-quiz-created" method="POST">
+		<ol id="new-quiz-list">
+			<h2>Name</h2>
+			<div id="new-quiz-name">
+				<label class="quiz-label" for="quizName">Enter the name of your quiz:</label>
+				<input class="quiz-answer-input" type="text" name="quizName" id="quizName">
+			</div>
+			<h2>Questions</h2>
+			<% for (var i = 0; i < questionNum; i++) { %>
+			<li class="new-quiz-unit">
+				<div class="quiz-question">
+					<label for="quizQuestion<%=i+1%>" class="quiz-label">Question:</label>
+					<textarea id="quizQuestion<%=i+1%>" name="quizQuestion<%=i+1%>" cols="30" rows="2" class="quiz-question-text"></textarea>
+				</div>
+				<div class="quiz-answers">
+					<% for (var k = 0; k < answerNum; k++) { %>
+					<div class="quiz-answer">
+						<label for="answer<%=i+1%>_<%=k+1%>" class="quiz-label">Answer <%= k + 1 %>:</label>
+						<input id="answer<%=i+1%>_<%=k+1%>" type="text" name="quizAnswer<%=i+1%>_<%=k+1%>" class="quiz-answer-input">
+						<div class="correct-answer">
+						<input type="radio" id="correctAnswer<%=i+1%>_<%=k+1%>" name="correctAnswer<%=i+1%>" value="<%=k+1%>"><label for="correctAnswer<%=i+1%>_<%=k+1%>" title="Check the correct answer"></label>
+						</div>
+					</div>
+					<% } %>
+
+
+					<div class="add-answer">
+					<button type="button" class="btn btn-small"><i class="fa fa-plus" aria-hidden="true"></i><span class="text"> Add one more answer</span></button>
+					</div>
+				</div>
+			</li>
+			<% } %>
+			
+			
+			
+			<div id="add-more">
+			<button type="button" class="btn add-new-question">Add another question</button>
+			</div>
+		</ol>
+		
+		
+
+		<section class="quiz-block clearfix">
+		<input type="hidden" name="questionNum" value="<%= questionNum %>">
+		<input type="hidden" name="answerNum" value="<%= answerNum %>">
+		<input type="submit" id="submitQuiz" class="btn btn-large" value="Create Quiz">
+		</section>
+		</form>
+		</section>
+	</div>
+	<script src="/assets/scripts/script.js"></script>
+</body>
+</html>
